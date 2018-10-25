@@ -49,7 +49,7 @@ public class Predmet {
             if(niz[i].equals(s)){
                 for(int j = i; j + 1 < this.getMaxBrStudenata(); j++)
                 {
-                    niz[i] = niz[i+1];
+                    niz[j] = niz[j+1];
                 }
                 niz[this.getMaxBrStudenata()-1] = null;
                 break;
