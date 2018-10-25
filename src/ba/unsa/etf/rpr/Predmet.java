@@ -36,16 +36,19 @@ public class Predmet {
     }
 
 
-    public void upisi(Student s) {
-        for (int i = 0; i < maxBrStudenata; i++)
+    public void upisi(Student s)throws IllegalArgumentException {
+        for (int i = 0; i < maxBrStudenata; i++) {
             if (niz[i] == null) {
                 niz[i] = new Student(s.getIme(), s.getPrezime(), s.getIndeks());
                 break;
             }
+            else if(niz[i].equals(s))throw new IllegalArgumentException("Ne možete upisati identičnog studenta!\n");
+        }
     }
 
-    public void ispisi(Student s) {
+    public void ispisi(Student s)throws IllegalAccessException {
         for(int i = 0; i < this.getMaxBrStudenata(); i++ ){
+            if(niz[i]==null)throw new IllegalAccessException("Student sa tim podacima na ovom predmetu ne postoji!\n");
             if(niz[i].equals(s)){
                 for(int j = i; j + 1 < this.getMaxBrStudenata(); j++)
                 {
@@ -54,7 +57,7 @@ public class Predmet {
                 niz[this.getMaxBrStudenata()-1] = null;
                 break;
             }
-           // if(i == maxBrStudenata -1)System.out.println("Student s tim podacima ne postoji!");
+           if(i == maxBrStudenata -1)throw new IllegalAccessException("Student sa tim podacima na ovom predmetu ne postoji!\n");
         }
     }
 

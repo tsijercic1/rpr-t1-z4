@@ -37,7 +37,7 @@ class PredmetTest {
     }
 
     @Test
-    void upisi() {
+    void upisi() throws IllegalAccessException {
         Predmet a = new Predmet("Fizika", "PGF3", 100);
         Student b = new Student("Tarik", "Sijerčić", 18252);
         a.upisi(b);
@@ -46,10 +46,15 @@ class PredmetTest {
         assertEquals("1. Tarik Sijerčić (18252)\n2. Rijad Fejzić (11111)\n",a.toString());
         a.ispisi(b);
         assertEquals("1. Rijad Fejzić (11111)\n", a.toString());
+        try {
+            a.upisi(c);
+        }catch(IllegalArgumentException e) {
+            assertEquals("Ne možete upisati identičnog studenta!\n",e.getMessage());
+        }
     }
 
     @Test
-    void ispisi() {
+    void ispisi() throws IllegalAccessException {
         Predmet a = new Predmet("Fizika", "PGF3", 100);
         Student b = new Student("Tarik", "Sijerčić", 18252);
         a.upisi(b);
@@ -60,7 +65,16 @@ class PredmetTest {
         d.upisi(e);
         Student f = new Student("Rijad", "Fejzić", 11111);
         d.upisi(f);
-        assertTrue(a.equals(d));
+        assertEquals(a, d);
+
+        d.ispisi(f);
+        d.ispisi(e);
+        try{
+            d.ispisi(b);
+        }catch(IllegalAccessException ex)
+        {
+            assertEquals("Student sa tim podacima na ovom predmetu ne postoji!\n",ex.getMessage());
+        }
     }
 
     @Test

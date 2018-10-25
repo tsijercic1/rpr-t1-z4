@@ -100,7 +100,7 @@ public class Program {
             predmeti[redniBrojPredmeta-1].upisi(studenti[redniBrojStudenta-1]);
 
         }
-        private static void signStudentOut(){
+        private static void signStudentOut() throws IllegalAccessException {
             System.out.println("Kojeg studenta ispisujete?");
             System.out.println("(Ukucajte njegov/njen redni broj)");
 
@@ -139,7 +139,7 @@ public class Program {
             predmeti[redniBrojPredmeta-1].ispisi(studenti[redniBrojStudenta-1]);
         }
 
-        private static void deleteStudent(){
+        private static void deleteStudent() throws IllegalAccessException {
             System.out.println("Kojeg studenta brišete?");
             System.out.println("(Ukucajte njegov/njen redni broj)");
 
@@ -218,7 +218,7 @@ public class Program {
 
             System.out.println(predmeti[redniBrojPredmeta-1]);
         }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException {
          predmeti = new Predmet[10];
          studenti = new Student[30];
         Scanner citac = new Scanner(System.in);
