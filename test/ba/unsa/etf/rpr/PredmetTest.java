@@ -50,11 +50,22 @@ class PredmetTest {
 
     @Test
     void ispisi() {
-
+        Predmet a = new Predmet("Fizika", "PGF3", 100);
+        Student b = new Student("Tarik", "Sijerčić", 18252);
+        a.upisi(b);
+        Student c = new Student("Rijad", "Fejzić", 11111);
+        a.upisi(c);
+        Predmet d = new Predmet("Fizika", "PGF3", 100);
+        Student e = new Student("Tarik", "Sijerčić", 18252);
+        d.upisi(e);
+        Student f = new Student("Rijad", "Fejzić", 11111);
+        d.upisi(f);
+        assertTrue(a.equals(d));
     }
 
     @Test
     void equals() {
+
     }
 
     //@Test
